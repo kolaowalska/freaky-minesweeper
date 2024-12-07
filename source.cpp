@@ -264,3 +264,76 @@ void splitRow(int n, int k) { // R
     *(expanse + n) = greaterCount;
 }
 
+int main() {
+    scanf("%d", &N);
+    address = (int**)malloc(N * sizeof(int*));
+    expanse = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; ++i){
+        int m;
+        scanf("%d", &m);
+        *(expanse + i) = m;
+        int* row = (int*)malloc(m * sizeof(int));
+        for(int j = 0; j < m; ++j) {
+            scanf("%d", row + j);
+        }
+        *(address + i) = row;
+    }
+    while (true){
+        char c;
+        scanf(" %c", &c);
+        switch (c) {
+            default:
+                break;
+            case 'K' :{
+                exit(0);
+            }
+            case 'W' :{
+                print();
+                break;
+            }
+            case 'U' :{
+                int n;
+                scanf("%d", &n);
+                deleteRow(n);
+                deleteTrashRow(n);
+                break;
+            }
+            case 'Z':{
+                int m, n;
+                scanf("%d %d", &n, &m);
+                swapRows(m, n);
+                break;
+            }
+            case 'P' :{
+                int n;
+                scanf("%d", &n);
+                palindromeRow(n);
+                break;
+            }
+            case 'M' :{
+                int n, m, k;
+                scanf("%d %d %d", &n, &m, &k);
+                insertRow(m, n, k);
+                break;
+            }
+            case 'C' :{
+                int m, n;
+                scanf("%d %d", &n, &m);
+                linearCross(n, m);
+                break;
+            }
+            case 'X' :{
+                int m, n;
+                scanf("%d %d", &n, &m);
+                diagonalCross(n, m);
+                break;
+            }
+            case 'R' :{
+                int n, k;
+                scanf("%d %d", &n, &k);
+                splitRow(n, k);
+                break;
+            }
+        }
+    }
+}
